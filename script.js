@@ -35,8 +35,8 @@ const questions = [
         correct: 1
     },
     {   // question 8
-        question: "DUPE?",
-        answers: ["6", "7", "8", "9"],
+        question: "Which Super Mario game was the first in the series to feature live orchestrated music?",
+        answers: ["Super Mario 64", "Super Mario Sunshine", "Super Mario Galaxy", "Super Mari Odyssey"],
         correct: 2
     },
     {   // question 9
@@ -77,15 +77,27 @@ const questions = [
 ];
 
 let currentQuestion = 0;
+let randomQuestions = []
 
 let loadQuestion = () => {
-    let question = questions[currentQuestion];
+    let question = randomQuestions[currentQuestion];
     document.getElementById("questionNumber").textContent = currentQuestion + 1;
     document.getElementById("questionDisplay").textContent = question.question;
     
     for (let i = 0; i < question.answers.length; i++) {
         document.getElementById("button" + i).textContent = question.answers[i];
     }
+}
+
+let getRandomQuestions = () => {
+    let allQuestions = [...questions]
+
+    for (let index = 0; index < 10; index++) {
+        let randomIndex = Math.floor(Math.random() * allQuestions.length)
+        randomQuestions.push(allQuestions[randomIndex])
+        allQuestions.splice(randomIndex, 1)
+    }
+    console.log(randomQuestions)
 }
 
 let checkAnswer = (selected) => {
@@ -109,10 +121,11 @@ let checkAnswer = (selected) => {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    getRandomQuestions()
+    for (let i = 0; i < 4; i++) {
+        document.getElementById("button" + i).addEventListener("click", () => {
+            checkAnswer(i)
+        });
+    }
     loadQuestion()
-    for (let i = 0; i < questions.length; i++) {
-    document.getElementById("button" + i).addEventListener("click", function() {
-        checkAnswer(i)
-    });
-}
 });
