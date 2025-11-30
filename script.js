@@ -113,7 +113,7 @@ let checkAnswer = (selected) => {
     };
 
     currentQuestion++;
-    if (currentQuestion < questions.length) {
+    if (currentQuestion < randomQuestions.length) {
         loadQuestion()
     } else {
         result.textContent += "All questions answered!"

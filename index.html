@@ -4,31 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mario Trivia Challenge</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Mario Trivia</h1>
-    </header>
+    <div class="game-wrapper">
+        <header class="top-banner">
+            <div class="top-banner-inner">
+                <img src="images/textLogo.png" alt="Text Logo" class="text-logo">
+                <p class="subtitle">Test your knowledge with Chuck Quizmo!</p>
+                <div class="score-board">Score: <span id="currentScore">0</span></div>
+            </div>
+        </header>
 
-    <main></main>
-        <div>
-            <h2>Welcome!</h2>
-        </div>
-        <div>
-            <p>Question <span id="questionNumber"></span></p>
-            <h3 id="questionDisplay"></h3>
-            <button id="button0"></button>
-            <button id="button1"></button>
-            <button id="button2"></button>
-            <button id="button3"></button>
-            <div id="result"></div>
-        </div>
+        <main class="stage">
+            <section class="dialogue-column">
+                <div class="question-bubble">
+                    <div class="bubble-content">
+                        <p class="question-counter">QUESTION <span id="questionNumber">1</span></p>
+                        <h3 id="questionDisplay">Loading...</h3>
+                    </div>
+                </div>
+
+                <div class="character-row">
+                    <div class="character character-chuck">
+                        <img src="images/chuckQuizmo.png" alt="Chuck Quizmo" class="chuck-character">
+                    </div>
+                    <div class="character character-mario">
+                        <img src="images/marioPoseOne.png" alt="Mario" class="mario-character">
+                    </div>
+                </div>
+            </section>
+
+            <aside class="answers-column">
+                <div class="answers-card">
+                    <h2 class="answers-title">Your Answer?</h2>
+                    <div class="button-grid">
+                        <button id="button0" class="answer-btn"></button>
+                        <button id="button1" class="answer-btn"></button>
+                        <button id="button2" class="answer-btn"></button>
+                        <button id="button3" class="answer-btn"></button>
+                    </div>
+                    <div id="result">Select an option!</div>
+                </div>
+            </aside>
+        </main>
+
+        <footer class="footer-bar">
+            <p>Good luck!</p>
+        </footer>
     </div>
-    </main>
 
-    <footer>
-    </footer>
     <script src="script.js"></script>
 </body>
 </html>
