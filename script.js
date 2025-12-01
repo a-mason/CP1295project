@@ -36,7 +36,7 @@ const questions = [
     },
     {   // question 8
         question: "Which Super Mario game was the first in the series to feature live orchestrated music?",
-        answers: ["Super Mario 64", "Super Mario Sunshine", "Super Mario Galaxy", "Super Mari Odyssey"],
+        answers: ["Super Mario 64", "Super Mario Sunshine", "Super Mario Galaxy", "Super Mario Odyssey"],
         correct: 2
     },
     {   // question 9
@@ -78,6 +78,7 @@ const questions = [
 
 let currentQuestion = 0;
 let randomQuestions = []
+let currentScore = 0;
 
 let loadQuestion = () => {
     let question = randomQuestions[currentQuestion];
@@ -101,26 +102,62 @@ let getRandomQuestions = () => {
 }
 
 let checkAnswer = (selected) => {
-    const question = questions[currentQuestion]
+    const question = randomQuestions[currentQuestion]
     const result = document.getElementById("result")
     
     if (selected == question.correct) {
+        currentScore++;
+        document.getElementById("currentScore").textContent = currentScore;
         result.textContent = "Correct!"
         result.style.color = "green"
+        animateMario(true)
     } else {
         result.textContent = "False!"
         result.style.color = "red"
+        animateMario(false)
     };
 
     currentQuestion++;
     if (currentQuestion < randomQuestions.length) {
         loadQuestion()
     } else {
-        result.textContent += "All questions answered!"
+        result.textContent += " All questions answered!"
     };
 }
 
+let animateMario = (isCorrect) => {
+    const marioImages = [
+        "images/marioPoseOne.png",
+        "images/marioPoseTwo.png",
+        "images/marioPoseThree.png",
+        "images/marioPoseFour.png",
+        "images/marioPoseFive.png",
+        "images/marioPoseSix.png",
+        "images/marioPoseSeven.png",
+        "images/marioPoseEight.png"
+    ]
+
+    const marioImg = document.querySelector(".mario-character")
+    let frameIndex = 0
+    const endFrame = isCorrect ? 6 : 7 
+
+    const interval = setInterval(() => {
+        if (frameIndex <= 5) {
+            marioImg.src = marioImages[frameIndex]
+            frameIndex++
+        } else {
+            clearInterval(interval)
+            marioImg.src = marioImages[endFrame]
+
+            setTimeout(() => {
+                marioImg.src = marioImages[0]
+            }, 1000);
+        }
+    }, 100);
+};
+
 document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("currentScore").textContent = currentScore
     getRandomQuestions()
     for (let i = 0; i < 4; i++) {
         document.getElementById("button" + i).addEventListener("click", () => {
