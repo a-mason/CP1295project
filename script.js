@@ -84,7 +84,7 @@ let loadQuestion = () => {
     let question = randomQuestions[currentQuestion];
     document.getElementById("questionNumber").textContent = currentQuestion + 1;
     document.getElementById("questionDisplay").textContent = question.question;
-    
+
     for (let i = 0; i < question.answers.length; i++) {
         document.getElementById("button" + i).textContent = question.answers[i];
     }
@@ -104,7 +104,7 @@ let getRandomQuestions = () => {
 let checkAnswer = (selected) => {
     const question = randomQuestions[currentQuestion]
     const result = document.getElementById("result")
-    
+
     if (selected == question.correct) {
         currentScore++;
         document.getElementById("currentScore").textContent = currentScore;
@@ -139,7 +139,7 @@ let animateMario = (isCorrect) => {
 
     const marioImg = document.querySelector(".mario-character")
     let frameIndex = 0
-    const endFrame = isCorrect ? 6 : 7 
+    const endFrame = isCorrect ? 6 : 7
 
     const interval = setInterval(() => {
         if (frameIndex <= 5) {
@@ -155,6 +155,51 @@ let animateMario = (isCorrect) => {
         }
     }, 100);
 };
+
+document.getElementById("footerToggle").addEventListener("click", () => {
+    const form = document.getElementById("addQuestionForm")
+    const toggle = document.getElementById("footerToggle")
+    form.hidden = !form.hidden
+    toggle.textContent = form.hidden ? "▼ Click to add another question ▼" : "▲ Click to hide ▲"
+})
+
+document.getElementById("submitQuestion").addEventListener("click", () => {
+    const newQ = document.getElementById("newQuestion").value.trim()
+    const ans0 = document.getElementById("answer0").value.trim()
+    const ans1 = document.getElementById("answer1").value.trim()
+    const ans2 = document.getElementById("answer2").value.trim()
+    const ans3 = document.getElementById("answer3").value.trim()
+    const correct = parseInt(document.getElementById("correctAnswer").value)
+
+    if (newQ && ans0 && ans1 && ans2 && ans3) {
+        questions.push({
+            question: newQ,
+            answers: [ans0, ans1, ans2, ans3],
+            correct: correct
+        })
+
+        let activeQuestionNumber = document.getElementById("questionNumber").textContent
+        let activeQuestion = document.getElementById("questionDisplay").textContent
+
+        document.getElementById("questionDisplay").textContent = "Your new question has been added!"
+
+        document.getElementById("newQuestion").value = ""
+        document.getElementById("answer0").value = ""
+        document.getElementById("answer1").value = ""
+        document.getElementById("answer2").value = ""
+        document.getElementById("answer3").value = ""
+        document.getElementById("correctAnswer").value = "0"
+
+        document.getElementById("addQuestionForm").hidden = true
+        document.getElementById("footerToggle").textContent = "Click to add another question ▼"
+
+        setTimeout(() => {
+            document.getElementById("questionNumber").textContent = activeQuestionNumber
+            document.getElementById("questionDisplay").textContent = activeQuestion
+        }, 3000);
+
+    }
+});
 
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("currentScore").textContent = currentScore

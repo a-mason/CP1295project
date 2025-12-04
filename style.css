@@ -281,6 +281,88 @@ body::before {
     border-top: 4px solid #5a3108;
 }
 
+#footerToggle {
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+#footerToggle:hover {
+    color: #fff;
+}
+
+#addQuestionForm {
+    max-width: 600px;
+    margin: 15px auto 0;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    border: 2px solid rgba(90, 49, 8, 0.3);
+}
+
+#addQuestionForm input,
+#addQuestionForm select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #5a3108;
+    border-radius: 8px;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 0.95rem;
+    background: #fff;
+    color: #5a3108;
+}
+
+#addQuestionForm input::placeholder {
+    color: #a68968;
+    opacity: 0.8;
+}
+
+#addQuestionForm input:focus,
+#addQuestionForm select:focus {
+    outline: none;
+    border-color: #ff9c24;
+    box-shadow: 0 0 0 3px rgba(255, 156, 36, 0.2);
+}
+
+.answer-input-label {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.answer-input-label label {
+    font-weight: 600;
+    color: #ffeaa7;
+    min-width: 120px;
+}
+
+#submitQuestion {
+    width: 100%;
+    padding: 12px;
+    background: #2ecc71;
+    color: white;
+    border: 3px solid #27ae60;
+    border-radius: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1rem;
+    box-shadow: 0 4px 0 #229954;
+    transition: all 0.1s ease;
+}
+
+#submitQuestion:hover {
+    background: #27ae60;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #229954;
+}
+
+#submitQuestion:active {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 #229954;
+}
+
 /* Mobile Tweaks */
 @media (max-width: 768px) {
     .score-board {
