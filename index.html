@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="game-wrapper">
         <header class="top-banner">
@@ -45,32 +47,35 @@
                         <button id="button2" class="answer-btn"></button>
                         <button id="button3" class="answer-btn"></button>
                     </div>
-                    <div id="result">Select an option!</div>
+                    <button id="resetButton" class="reset-btn">Reset Quiz</button>
                 </div>
             </aside>
         </main>
-<footer class="footer-bar">
-    <p id="footerToggle">▼ Click to add another question ▼</p>
-    <div id="addQuestionForm" hidden>
-        <input type="text" id="newQuestion" placeholder="Enter your Question">
-        <input type="text" id="answer0" placeholder="Answer 1">
-        <input type="text" id="answer1" placeholder="Answer 2">
-        <input type="text" id="answer2" placeholder="Answer 3">
-        <input type="text" id="answer3" placeholder="Answer 4">
-        <div>
-            <label>Correct Answer:</label>
-            <select id="correctAnswer">
-                <option value="0">Answer 1</option>
-                <option value="1">Answer 2</option>
-                <option value="2">Answer 3</option>
-                <option value="3">Answer 4</option>
-            </select>
-        </div>
-        <button id="submitQuestion">Add Question</button>
+        <footer class="footer-bar">
+            <p id="footerToggle">▼ Click to add another question ▼</p>
+            <div id="addQuestionForm" hidden>
+                <input type="text" id="newQuestion" placeholder="Enter your Question">
+                <div class="answer-row">
+                    <input type="text" id="answer0" placeholder="Answer 1">
+                    <input type="text" id="answer1" placeholder="Answer 2">
+                </div>
+                <div class="answer-row">
+                    <input type="text" id="answer2" placeholder="Answer 3">
+                    <input type="text" id="answer3" placeholder="Answer 4">
+                </div>
+                <div class="bottom-row">
+                    <select id="correctAnswer">
+                        <option value="0">Answer 1</option>
+                        <option value="1">Answer 2</option>
+                        <option value="2">Answer 3</option>
+                        <option value="3">Answer 4</option>
+                    </select>
+                    <button id="submitQuestion">Add Question</button>
+                </div>
+        </footer>
     </div>
-</footer>
-</div>
 
     <script src="script.js"></script>
 </body>
+
 </html>

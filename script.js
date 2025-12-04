@@ -103,17 +103,12 @@ let getRandomQuestions = () => {
 
 let checkAnswer = (selected) => {
     const question = randomQuestions[currentQuestion]
-    const result = document.getElementById("result")
 
     if (selected == question.correct) {
         currentScore++;
         document.getElementById("currentScore").textContent = currentScore;
-        result.textContent = "Correct!"
-        result.style.color = "green"
         animateMario(true)
     } else {
-        result.textContent = "False!"
-        result.style.color = "red"
         animateMario(false)
     };
 
@@ -210,4 +205,23 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
     loadQuestion()
+
+    const answerInputs = ["answer0", "answer1", "answer2", "answer3"]
+    answerInputs.forEach((id, index) => {
+        document.getElementById(id).addEventListener("input", (e) => {
+            const value = e.target.value.trim()
+            const optionText = value || `Answer ${index + 1}`
+            document.getElementById("correctAnswer").options[index].textContent = optionText
+        })
+    })
+
+    document.getElementById("resetButton").addEventListener("click", () => {
+        currentQuestion = 0
+        currentScore = 0
+        randomQuestions = []
+        document.getElementById("currentScore").textContent = currentScore
+        getRandomQuestions()
+        loadQuestion()
+        console.log(questions.length)
+    });
 });
