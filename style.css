@@ -5,7 +5,8 @@
     box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
     height: 100%;
 }
 
@@ -17,7 +18,8 @@ body {
     background: linear-gradient(to bottom, #4facfe 0%, #00f2fe 100%);
     display: flex;
     justify-content: center;
-    align-items: center; /* Center vertically */
+    align-items: center;
+    /* Center vertically */
     padding: 20px;
 }
 
@@ -26,10 +28,8 @@ body::before {
     content: "";
     position: fixed;
     inset: 0;
-    background-image: radial-gradient(
-        #ffc560 2px,
-        transparent 2px
-    );
+    background-image: radial-gradient(#ffc560 2px,
+            transparent 2px);
     background-size: 30px 30px;
     animation: dotDrift 20s linear infinite;
     z-index: -1;
@@ -39,8 +39,10 @@ body::before {
     from {
         background-position: 0 0;
     }
+
     to {
-        background-position: 300px 300px; /* bottom-right drift */
+        background-position: 300px 300px;
+        /* bottom-right drift */
     }
 }
 
@@ -48,11 +50,12 @@ body::before {
 .game-wrapper {
     width: 100%;
     max-width: 1000px;
-    background: #fff7df; /* Cream paper color */
+    background: #fff7df;
+    /* Cream paper color */
     border-radius: 20px;
     border: 5px solid #5a3108;
-    box-shadow: 
-        10px 10px 0 rgba(0,0,0,0.2),
+    box-shadow:
+        10px 10px 0 rgba(0, 0, 0, 0.2),
         inset 0 0 40px rgba(255, 160, 60, 0.1);
     display: flex;
     flex-direction: column;
@@ -62,18 +65,16 @@ body::before {
 
 /* Header ----------------------------------------------------------------- */
 .top-banner {
-    background: repeating-linear-gradient(
-        45deg,
-        #ff9c24,
-        #ff9c24 10px,
-        #ffb636 10px,
-        #ffb636 20px
-    );
+    background: repeating-linear-gradient(45deg,
+            #ff9c24,
+            #ff9c24 10px,
+            #ffb636 10px,
+            #ffb636 20px);
     border-bottom: 5px solid #5a3108;
     padding: 20px;
     text-align: center;
     position: relative;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .text-logo {
@@ -118,7 +119,8 @@ body::before {
 /* Stage layout ----------------------------------------------------------- */
 .stage {
     display: flex;
-    flex-wrap: wrap; /* Allows stacking on mobile */
+    flex-wrap: wrap;
+    /* Allows stacking on mobile */
     gap: 30px;
     padding: 30px;
     align-items: flex-start;
@@ -141,16 +143,17 @@ body::before {
     position: relative;
     padding: 30px;
     height: 220px;
-    box-shadow: 8px 8px 0 rgba(0,0,0,0.1);
-    
+    box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.1);
+
     /* Image Handling */
     background-image: url("images/chatBubble.png");
-    background-size: 100% 100%; 
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     background-color: transparent;
-    border: none; /* remove css border if image loads */
+    border: none;
+    /* remove css border if image loads */
     box-shadow: none;
-    
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -158,7 +161,7 @@ body::before {
 
 .bubble-content {
     /* Pushes content slightly up/left to fit standard bubble sprites */
-    padding: 20px 40px 30px 40px; 
+    padding: 20px 40px 30px 40px;
     text-align: center;
     width: 100%;
 }
@@ -185,18 +188,37 @@ body::before {
     align-items: flex-end;
     gap: 20px;
     margin-top: 20px;
-    height: 160px; /* Fixed height to keep layout stable */
+    height: 160px;
+    /* Fixed height to keep layout stable */
 }
 
 .character img {
     max-height: 200px;
     width: 125px;
-    filter: drop-shadow(5px 5px 0 rgba(0,0,0,0.3));
+    filter: drop-shadow(5px 5px 0 rgba(0, 0, 0, 0.3));
     transition: transform 0.3s ease;
 }
 
 .character:hover img {
     transform: translateY(-5px) scale(1.05);
+}
+
+.character img:active {
+    animation: flipSide 0.4s ease-in-out;
+}
+
+@keyframes flipSide {
+    0% {
+        transform: scaleX(1);
+    }
+
+    50% {
+        transform: scaleX(-1);
+    }
+
+    100% {
+        transform: scaleX(1);
+    }
 }
 
 /* Answers side ----------------------------------------------------------- */
@@ -417,15 +439,16 @@ body::before {
         margin-top: 10px;
         display: inline-block;
     }
-    
+
     .stage {
         flex-direction: column;
     }
-    
-    .dialogue-column, .answers-column {
+
+    .dialogue-column,
+    .answers-column {
         width: 100%;
     }
-    
+
     .question-bubble {
         min-height: auto;
         background-size: 100% 100%;

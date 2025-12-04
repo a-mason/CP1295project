@@ -120,7 +120,7 @@ let checkAnswer = (selected) => {
         document.querySelector(".answers-title").textContent = "Quiz Complete!"
         document.querySelector(".question-counter").textContent = "All questions answered!"
         document.getElementById("questionDisplay").innerHTML = `You got ${currentScore} out of ${randomQuestions.length} correct! <br>
-        Press Reset Quiz to try again!`
+        Press <span style="color:#E74C3C">Reset Quiz</span> to try again!`
     };
 }
 
