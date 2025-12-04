@@ -26,9 +26,22 @@ body::before {
     content: "";
     position: fixed;
     inset: 0;
-    background-image: radial-gradient(rgba(255, 255, 255, 0.3) 2px, transparent 2px);
+    background-image: radial-gradient(
+        #ffc560 2px,
+        transparent 2px
+    );
     background-size: 30px 30px;
+    animation: dotDrift 20s linear infinite;
     z-index: -1;
+}
+
+@keyframes dotDrift {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 300px 300px; /* bottom-right drift */
+    }
 }
 
 /* Main card -------------------------------------------------------------- */
@@ -312,7 +325,6 @@ body::before {
 #addQuestionForm {
     max-width: 600px;
     margin: 15px auto 0;
-    padding: 20px;
     background: rgba(255, 255, 255, 0.15);
     border-radius: 12px;
     border: 2px solid rgba(90, 49, 8, 0.3);
