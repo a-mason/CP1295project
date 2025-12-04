@@ -116,7 +116,11 @@ let checkAnswer = (selected) => {
     if (currentQuestion < randomQuestions.length) {
         loadQuestion()
     } else {
-        result.textContent += " All questions answered!"
+        document.querySelectorAll(".answer-btn").forEach(btn => btn.disabled = true)
+        document.querySelector(".answers-title").textContent = "Quiz Complete!"
+        document.querySelector(".question-counter").textContent = "All questions answered!"
+        document.getElementById("questionDisplay").innerHTML = `You got ${currentScore} out of ${randomQuestions.length} correct! <br>
+        Press Reset Quiz to try again!`
     };
 }
 
@@ -219,9 +223,11 @@ document.addEventListener("DOMContentLoaded", () => {
         currentQuestion = 0
         currentScore = 0
         randomQuestions = []
+        document.querySelector(".question-counter").innerHTML = `QUESTION <span id="questionNumber">1</span>`;
         document.getElementById("currentScore").textContent = currentScore
+        document.querySelectorAll(".answer-btn").forEach(btn => btn.disabled = false)
+        document.querySelector(".answers-title").textContent = "Your Answer?"
         getRandomQuestions()
         loadQuestion()
-        console.log(questions.length)
     });
 });
